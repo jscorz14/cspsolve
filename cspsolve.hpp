@@ -34,9 +34,9 @@
 template<
     typename Instance,
     typename Variable,
-    typename Valid,      // bool(const Instance&, const Iterator&)
-    typename FirstValue, // void(Instance&, const Iterator&)
-    typename NextValue,  // bool(Instance&, const Iterator&)
+    typename Valid,      // bool(const Instance&, const Variable&)
+    typename FirstValue, // void(Instance&, const Variable&)
+    typename NextValue,  // bool(Instance&, const Variable&)
     typename Output      // bool(Instance&)
 >
 bool cspsolve(Instance& instance,
