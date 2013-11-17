@@ -31,21 +31,23 @@
 #ifndef CSPSOLVE_H_
 #define CSPSOLVE_H_
 
+namespace cspsolve {
+
 template<
     typename Instance,
     typename Variable,
     typename Valid,      // bool(const Instance&, const Variable&)
     typename FirstValue, // void(Instance&, const Variable&)
     typename NextValue,  // bool(Instance&, const Variable&)
-    typename Output      // bool(Instance&)
+    typename Output      // bool(const Instance&)
 >
-bool cspsolve(Instance& instance,
-              Variable firstVariable,
-              Variable pastEndVariable,
-              Valid valid,
-              FirstValue firstValue,
-              NextValue nextValue,
-              Output output) {
+bool solve(Instance& instance,
+           Variable firstVariable,
+           Variable pastEndVariable,
+           Valid valid,
+           FirstValue firstValue,
+           NextValue nextValue,
+           Output output) {
 
     if (firstVariable == pastEndVariable) { // the range is empty
         return true;
@@ -88,5 +90,7 @@ bool cspsolve(Instance& instance,
     return solutionFound;
     
 }
+
+} // namespace cspsolve
 
 #endif // CSPSOLVE_H_

@@ -37,7 +37,7 @@ int main(void) {
     std::fill(instance.begin(), instance.end(), 0);
     
     int solutions = 0;
-    const auto output = [&solutions](QueenArray& instance) -> bool {
+    const auto output = [&solutions](const QueenArray& instance) -> bool {
         solutions++;
         for (int queen = 0; queen < DIMENSION; queen++) {
             for (int col = 0; col < DIMENSION; col++) {
@@ -50,7 +50,7 @@ int main(void) {
         return true; // find the next solution
     };
     
-    cspsolve(instance, 0, DIMENSION, valid, firstValue, nextValue, output);
+    cspsolve::solve(instance, 0, DIMENSION, valid, firstValue, nextValue, output);
     
     std::cout << "Number of solutions: " << solutions << std::endl;
 

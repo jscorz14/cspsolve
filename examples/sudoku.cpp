@@ -62,7 +62,7 @@ bool nextValue(SudokuArray& instance, const EntryIterator& entry) {
     return ++instance[*entry] <= 9;
 }
 
-bool output(SudokuArray& instance) {
+bool output(const SudokuArray& instance) {
     std::cout << "Solution:" << std::endl;
     for (int i = 0; i < (int) instance.size(); i++) {
         std::cout << instance[i] << " ";
@@ -95,7 +95,7 @@ int main(void) {
         exit(-1);
     }
 
-    cspsolve(instance, unknownEntries.begin(), unknownEntries.end(), valid, firstValue, nextValue, output);
+    cspsolve::solve(instance, unknownEntries.begin(), unknownEntries.end(), valid, firstValue, nextValue, output);
 
     return 0;
 
