@@ -41,7 +41,7 @@ template<
     typename NextValue,  // bool(Instance&, const Variable&)
     typename Output      // bool(const Instance&)
 >
-bool solve(Instance& instance,
+void solve(Instance& instance,
            Variable firstVariable,
            Variable pastEndVariable,
            Valid valid,
@@ -50,10 +50,8 @@ bool solve(Instance& instance,
            Output output) {
 
     if (firstVariable == pastEndVariable) { // the range is empty
-        return true;
+        return;
     }
-    
-    bool solutionFound = false;
     
     Variable variable = firstVariable;
     bool forceInvalid = false;
@@ -61,7 +59,6 @@ bool solve(Instance& instance,
     while (1) {
         
         if (variable == pastEndVariable) { // reached the past-the-end variable of the range
-            solutionFound = true;
             // submit solution to "output" callback
             if (output(instance)) { // continue searching
                 forceInvalid = true;
@@ -86,9 +83,7 @@ bool solve(Instance& instance,
         }
         
     }
-    
-    return solutionFound;
-    
+
 }
 
 } // namespace cspsolve

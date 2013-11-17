@@ -14,13 +14,6 @@ int getIndex(int row, int col) {
     return row * SIZE + col;
 }
 
-int parseChar(char c) {
-    if (c == '.') return 0;
-    int intValue = c - '0';
-    if (!(intValue >= 1 && intValue <= 9)) intValue = -1;
-    return intValue;
-}
-
 bool valid(SudokuArray& instance, const EntryIterator& entry) {
 
     if (instance[*entry] == 0) return false;
@@ -69,6 +62,13 @@ bool output(const SudokuArray& instance) {
         if ((i + 1) % 9 == 0) std::cout << std::endl;
     }
     return false; // stop searching for solutions
+}
+
+int parseChar(char c) {
+    if (c == '.') return 0;
+    int intValue = c - '0';
+    if (!(intValue >= 1 && intValue <= 9)) intValue = -1;
+    return intValue;
 }
 
 int main(void) {
