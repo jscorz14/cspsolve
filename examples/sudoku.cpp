@@ -57,7 +57,7 @@ bool nextValue(SudokuArray& instance, const EntryIterator& entry) {
 
 bool output(const SudokuArray& instance) {
     std::cout << "Solution:" << std::endl;
-    for (int i = 0; i < (int) instance.size(); i++) {
+    for (std::size_t i = 0; i < instance.size(); i++) {
         std::cout << instance[i] << " ";
         if ((i + 1) % 9 == 0) std::cout << std::endl;
     }
